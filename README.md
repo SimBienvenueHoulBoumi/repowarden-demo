@@ -69,3 +69,4 @@ Les PR de démonstration montrent ce qui passe et ce qui est bloqué :
 - [#2 — non conforme](https://github.com/SimBienvenueHoulBoumi/repogarde-demo/pull/2) : faite sans les hooks, bloquée par la CI (message, branche, formatage), puis fermée ; le log du blocage reste consultable.
 
 Les branches mergées sont supprimées automatiquement (serveur et postes).
+# panier
