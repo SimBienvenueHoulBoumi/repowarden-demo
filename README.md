@@ -1,8 +1,8 @@
-# repogarde-demo
+# repowarden-demo
 
 🇫🇷 Français · [🇬🇧 English](README.en.md)
 
-Projet de démonstration de [repogarde](https://github.com/SimBienvenueHoulBoumi/repogarde) : une petite application Python dont tout le cycle de vie (commits, branches, formatage, tests, code mort, releases) est encadré par repogarde, configuré **uniquement avec les modèles publiés** (`templates/project/`).
+Projet de démonstration de [repowarden](https://github.com/simdevWarden/repowarden) : une petite application Python dont tout le cycle de vie (commits, branches, formatage, tests, code mort, releases) est encadré par repowarden, configuré **uniquement avec les modèles publiés** (`templates/project/`).
 
 ## Le projet
 
@@ -19,21 +19,22 @@ CHANGELOG.md            généré à chaque release
 pip install pytest && pytest -q     # lancer les tests (pythonpath réglé dans pyproject.toml)
 ```
 
-Les versions sont publiées automatiquement : [releases](https://github.com/SimBienvenueHoulBoumi/repogarde-demo/releases).
+Les versions sont publiées automatiquement : [releases](https://github.com/simdevWarden/repowarden-demo/releases).
 
-## Configuration repogarde
+## Configuration repowarden
 
 | Fichier | Rôle |
 |---|---|
-| `.github/workflows/repogarde.yml` | CI : action `SimBienvenueHoulBoumi/repogarde@v3`, mode strict : messages, branche, secrets, formatage (ruff), tests (pytest), nouveau code mort (ruff, vulture) |
-| `.github/workflows/release.yml` | releases automatiques : version calculée depuis les commits, PR de release validée par la CI puis mergée, tag et release |
-| `.repogarde.conf` | réglages partagés : version minimale de repogarde attendue sur les postes (`version`), langue des messages de la CI (`lang = fr`), exemples commentés |
+| `.github/workflows/repowarden.yml` | CI : action `simdevWarden/repowarden@v4`, mode strict : messages, branche, secrets, formatage (ruff), tests (pytest), nouveau code mort (ruff, vulture) |
+| `.github/workflows/release.yml` | releases, flux `develop` → `main` : préversion `vX.Y.Z-next.N` le soir si `develop` a changé, PR de livraison `develop` → `main` ; son merge publie le tag et la release |
+| `.github/workflows/nettoyage.yml` | branches de PR supprimées après merge (`main` et `develop` conservées) |
+| `.repowarden.conf` | réglages partagés : version minimale de repowarden attendue sur les postes (`version`), langue des messages de la CI (`lang = fr`), exemples commentés |
 
 ## Essayer
 
 ```bash
-npm install -g @simbie/repogarde && repogarde install --global   # une fois par poste
-git clone https://github.com/SimBienvenueHoulBoumi/repogarde-demo && cd repogarde-demo
+npm install -g repowarden && repowarden install --global   # une fois par poste
+git clone https://github.com/simdevWarden/repowarden-demo && cd repowarden-demo
 git switch -c feat/division
 # … modifier src/calc/__init__.py, puis :
 git add . && git cc                # assistant de commit
@@ -43,7 +44,7 @@ git push -u origin feat/division   # tests (pytest) avant l'envoi
 
 Sans les hooks, la CI refait les mêmes vérifications et bloque la PR.
 
-## Technologies prises en charge par repogarde
+## Technologies prises en charge par repowarden
 
 Ce projet est en Python, mais la même configuration fonctionne pour :
 
@@ -57,16 +58,16 @@ Ce projet est en Python, mais la même configuration fonctionne pour :
 | **Hébergement / CI** | Hooks : tout dépôt Git · CI : GitHub Actions, GitLab CI |
 | **Systèmes** | Linux, macOS, Windows |
 
-Détails (formateurs, commandes de test) : [repogarde — Technologies](https://simbienvenuehoulboumi.github.io/repogarde/technologies/).
+Détails (formateurs, commandes de test) : [repowarden — Technologies](https://simdevwarden.github.io/repowarden/technologies/).
 
 ## Protection
 
-`main` est protégée : merge uniquement par PR, check `repogarde` obligatoire.
+Le travail entre dans `develop` (branche par défaut) ; **seul `develop` entre dans `main`**, par la PR de livraison. Une PR de travail ouverte vers `main` est reciblée vers `develop` par la CI. Les deux branches sont protégées : merge uniquement par PR, check `repowarden` obligatoire.
 
 Les PR de démonstration montrent ce qui passe et ce qui est bloqué :
 
-- [#1 — conforme](https://github.com/SimBienvenueHoulBoumi/repogarde-demo/pull/1) : faite avec les hooks, mergée ;
-- [#2 — non conforme](https://github.com/SimBienvenueHoulBoumi/repogarde-demo/pull/2) : faite sans les hooks, bloquée par la CI (message, branche, formatage), puis fermée ; le log du blocage reste consultable.
+- [#1 — conforme](https://github.com/simdevWarden/repowarden-demo/pull/1) : faite avec les hooks, mergée ;
+- [#2 — non conforme](https://github.com/simdevWarden/repowarden-demo/pull/2) : faite sans les hooks, bloquée par la CI (message, branche, formatage), puis fermée ; le log du blocage reste consultable.
 
 Les branches mergées sont supprimées automatiquement (serveur et postes).
 # panier
