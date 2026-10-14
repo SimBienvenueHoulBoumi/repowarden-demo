@@ -1,8 +1,8 @@
-# repogarde-demo
+# repowarden-demo
 
 [🇫🇷 Français](README.md) · 🇬🇧 English
 
-Demo project for [repogarde](https://github.com/SimBienvenueHoulBoumi/repogarde): a small Python application whose whole lifecycle (commits, branches, formatting, tests, dead code, releases) is guarded by repogarde, configured **only with the published templates** (`templates/project/`).
+Demo project for [repowarden](https://github.com/simdevWarden/repowarden): a small Python application whose whole lifecycle (commits, branches, formatting, tests, dead code, releases) is guarded by repowarden, configured **only with the published templates** (`templates/project/`).
 
 ## The project
 
@@ -19,21 +19,21 @@ CHANGELOG.md            generated on each release
 pip install pytest && pytest -q     # run the tests (pythonpath set in pyproject.toml)
 ```
 
-Versions are published automatically: [releases](https://github.com/SimBienvenueHoulBoumi/repogarde-demo/releases).
+Versions are published automatically: [releases](https://github.com/simdevWarden/repowarden-demo/releases).
 
-## repogarde configuration
+## repowarden configuration
 
 | File | Role |
 |---|---|
-| `.github/workflows/repogarde.yml` | CI: `SimBienvenueHoulBoumi/repogarde@v3` action, strict mode: messages, branch, secrets, formatting (ruff), tests (pytest), new dead code (ruff, vulture) |
+| `.github/workflows/repowarden.yml` | CI: `simdevWarden/repowarden@v4` action, strict mode: messages, branch, secrets, formatting (ruff), tests (pytest), new dead code (ruff, vulture) |
 | `.github/workflows/release.yml` | automatic releases: version computed from the commits, release PR validated by the CI then merged, tag and release |
-| `.repogarde.conf` | shared settings: minimum repogarde version expected on developer machines (`version`), CI message language (`lang = fr`), commented examples |
+| `.repowarden.conf` | shared settings: minimum repowarden version expected on developer machines (`version`), CI message language (`lang = fr`), commented examples |
 
 ## Try it
 
 ```bash
-npm install -g @simbie/repogarde && repogarde install --global   # once per machine
-git clone https://github.com/SimBienvenueHoulBoumi/repogarde-demo && cd repogarde-demo
+npm install -g repowarden && repowarden install --global   # once per machine
+git clone https://github.com/simdevWarden/repowarden-demo && cd repowarden-demo
 git switch -c feat/division
 # … edit src/calc/__init__.py, then:
 git add . && git cc                # commit assistant
@@ -43,7 +43,7 @@ git push -u origin feat/division   # tests (pytest) before sending
 
 Without the hooks, the CI runs the same checks again and blocks the PR.
 
-## Technologies supported by repogarde
+## Technologies supported by repowarden
 
 This project is in Python, but the same configuration works for:
 
@@ -57,15 +57,15 @@ This project is in Python, but the same configuration works for:
 | **Hosting / CI** | Hooks: any Git repository · CI: GitHub Actions, GitLab CI |
 | **Systems** | Linux, macOS, Windows |
 
-Details (formatters, test commands): [repogarde — Technologies](https://simbienvenuehoulboumi.github.io/repogarde/en/technologies/).
+Details (formatters, test commands): [repowarden — Technologies](https://simdevwarden.github.io/repowarden/en/technologies/).
 
 ## Protection
 
-`main` is protected: merge only through PRs, `repogarde` check required.
+`main` is protected: merge only through PRs, `repowarden` check required.
 
 The demo PRs show what passes and what is blocked:
 
-- [#1 — compliant](https://github.com/SimBienvenueHoulBoumi/repogarde-demo/pull/1): made with the hooks, merged;
-- [#2 — non-compliant](https://github.com/SimBienvenueHoulBoumi/repogarde-demo/pull/2): made without the hooks, blocked by the CI (message, branch, formatting), then closed; the blocking log is still available.
+- [#1 — compliant](https://github.com/simdevWarden/repowarden-demo/pull/1): made with the hooks, merged;
+- [#2 — non-compliant](https://github.com/simdevWarden/repowarden-demo/pull/2): made without the hooks, blocked by the CI (message, branch, formatting), then closed; the blocking log is still available.
 
 Merged branches are deleted automatically (server and developer machines).

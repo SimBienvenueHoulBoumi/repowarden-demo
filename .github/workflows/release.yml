@@ -21,7 +21,7 @@ permissions: {}
 
 jobs:
   release:
-    uses: SimBienvenueHoulBoumi/repogarde/.github/workflows/release-auto.yml@v3
+    uses: simdevWarden/repowarden/.github/workflows/release-auto.yml@v4
     permissions:
       contents: write
       pull-requests: write
@@ -31,7 +31,7 @@ jobs:
     # Optionnel :
     # with:
     #   release-type: maven          # sinon détecté (pom.xml, package.json, pyproject.toml…)
-    #   workflows: repogarde.yml     # sinon les workflows pull_request + workflow_dispatch
+    #   workflows: repowarden.yml    # sinon les workflows pull_request + workflow_dispatch
 
   # Publication propre au projet, après une release (exemple) :
   # publier:
