@@ -26,7 +26,8 @@ Les versions sont publiées automatiquement : [releases](https://github.com/simd
 | Fichier | Rôle |
 |---|---|
 | `.github/workflows/repowarden.yml` | CI : action `simdevWarden/repowarden@v4`, mode strict : messages, branche, secrets, formatage (ruff), tests (pytest), nouveau code mort (ruff, vulture) |
-| `.github/workflows/release.yml` | releases automatiques : version calculée depuis les commits, PR de release validée par la CI puis mergée, tag et release |
+| `.github/workflows/release.yml` | releases, flux `develop` → `main` : préversion `vX.Y.Z-next.N` le soir si `develop` a changé, PR de livraison `develop` → `main` ; son merge publie le tag et la release |
+| `.github/workflows/nettoyage.yml` | branches de PR supprimées après merge (`main` et `develop` conservées) |
 | `.repowarden.conf` | réglages partagés : version minimale de repowarden attendue sur les postes (`version`), langue des messages de la CI (`lang = fr`), exemples commentés |
 
 ## Essayer
@@ -61,7 +62,7 @@ Détails (formateurs, commandes de test) : [repowarden — Technologies](https:/
 
 ## Protection
 
-`main` est protégée : merge uniquement par PR, check `repowarden` obligatoire.
+Le travail entre dans `develop` (branche par défaut) ; **seul `develop` entre dans `main`**, par la PR de livraison. Une PR de travail ouverte vers `main` est reciblée vers `develop` par la CI. Les deux branches sont protégées : merge uniquement par PR, check `repowarden` obligatoire.
 
 Les PR de démonstration montrent ce qui passe et ce qui est bloqué :
 
