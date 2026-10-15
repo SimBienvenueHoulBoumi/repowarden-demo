@@ -34,6 +34,7 @@ jobs:
       actions: write
       checks: read
       statuses: write
+      issues: read # notes de version : tickets livrés (exigé par release-auto ≥ 4.8.3)
     with:
       mode: tag
       delivery-schedule: "0 7 * * 5" # même cron que la fenêtre ci-dessus
