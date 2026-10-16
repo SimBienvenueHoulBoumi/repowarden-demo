@@ -71,3 +71,7 @@ Les PR de démonstration montrent ce qui passe et ce qui est bloqué :
 
 Les branches mergées sont supprimées automatiquement (serveur et postes).
 # panier
+
+## Licence
+
+Logiciel libre, distribué sous la [GNU General Public License version 3](LICENSE), ou (au choix) toute version ultérieure (`GPL-3.0-or-later`).
