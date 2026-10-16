@@ -70,3 +70,7 @@ The demo PRs show what passes and what is blocked:
 - [#2 — non-compliant](https://github.com/simdevWarden/repowarden-demo/pull/2): made without the hooks, blocked by the CI (message, branch, formatting), then closed; the blocking log is still available.
 
 Merged branches are deleted automatically (server and developer machines).
+
+## License
+
+Free software, distributed under the [GNU General Public License version 3](LICENSE), or (at your option) any later version (`GPL-3.0-or-later`).
