@@ -74,4 +74,4 @@ Les branches mergées sont supprimées automatiquement (serveur et postes).
 
 ## Licence
 
-Logiciel libre, distribué sous la [GNU General Public License version 3](LICENSE), ou (au choix) toute version ultérieure (`GPL-3.0-or-later`).
+Logiciel libre, distribué sous la [GNU General Public License version 3](LICENSE) (`GPL-3.0-only`).
