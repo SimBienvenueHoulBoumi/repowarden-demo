@@ -73,4 +73,4 @@ Merged branches are deleted automatically (server and developer machines).
 
 ## License
 
-Free software, distributed under the [GNU General Public License version 3](LICENSE), or (at your option) any later version (`GPL-3.0-or-later`).
+Free software, distributed under the [GNU General Public License version 3](LICENSE) (`GPL-3.0-only`).
